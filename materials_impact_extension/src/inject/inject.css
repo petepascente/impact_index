@@ -2,28 +2,42 @@
  * Place your custom CSS styles here.
  **/
 
- .dankAssButton {
-   border: none;
-   border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   transition: width 2s;
-   transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
- }
+.tooltip {
+  position: relative;
+  display: inline;
+  color: red;
+  border-bottom: 1px dotted black;
+}
 
- .dankAssButton:hover {
-   width: 300px
- }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
- .foundIt {
-   color: blue;
-   text-decoration: wavy;
-   font-size: 1em;
-   transition: color 2s, font-size 2s;
- }
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 
- .foundIt:hover {
-   color: red;
-   font-size: 2em;
-
- }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
