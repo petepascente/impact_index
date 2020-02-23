@@ -1,3 +1,32 @@
+import firebase from "firebase.js";
+
+var firebaseConfig = {
+	apiKey: "AIzaSyBXLDW5CIx271ZOa-x1HnhqPWPHZCyCTHU",
+	authDomain: "impact-index-2020.firebaseapp.com",
+	databaseURL: "https://impact-index-2020.firebaseio.com",
+	projectId: "impact-index-2020",
+	storageBucket: "impact-index-2020.appspot.com",
+	messagingSenderId: "969923046117",
+	appId: "1:969923046117:web:3bab1da20a6420e638420c",
+	measurementId: "G-QYEEVPM3HB"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  
+  var db = firebase.firestore();
+  
+  var collectionRef = db.collection("materials");
+  
+  var mataroos = [];
+
+  collectionRef.get().then(querySnapshot => {
+		querySnapshot.forEach(doc => {
+			console.log(doc.data());
+		  //mataroos.push(btn.innerHTML = doc.data())
+		});
+  });
+  
+
 //Read these in from firebase?
 var materials = ["polyester", "acrylic", "foo", "encyclopedia"];
 
