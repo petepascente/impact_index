@@ -11,13 +11,24 @@
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
+  width: 300px;
+  height: 280px;
+  background-color: #e6e6e6;
+  text-align: left;
+  border-radius: 5px;
+  padding: 15px;
   position: absolute;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 12% 12% 12% 12% 12% 10% 30%;
+  grid-template-areas: 
+    "header header header "
+    "grade fossil fossilRate "
+    "grade emmis emmisRate "
+    "grade wtr wtrRate "
+    "grade Eutro EutroRate "
+    "space space space"
+    "words words words" ;
   z-index: 1;
   bottom: 125%;
   left: 50%;
@@ -30,14 +41,121 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 17%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: black transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+body {
+  background-color: #a3d5d3;
+}
+
+#head {
+  color: black;
+  grid-area: header;
+  font-size: 17px;
+  align-self: left;
+  font-family: sans-serif;
+}
+
+#sidewayyyz{
+/*   grid-area: header;
+writing-mode: sideways-rl; 
+text-orientation: mixed; */
+  grid-area: grade;
+/*   writing-mode: vertical-rl;
+  text-orientation: mixed; */
+ color: black;
+ transform: rotate(-90deg); 
+  font-family: sans-serif;
+   font-size: 9px;
+}
+
+#bigGrade {
+  color: black;
+  grid-area: grade;
+  font-size: 150px;
+  align-self: center;
+  font-family: sans-serif;
+}
+
+#iconOne {
+  grid-area: fossil;
+  font-size: 28px;
+  color: red;
+  justify-self: center;
+  align-self: center;
+}
+
+#ratingOne {
+  grid-area: fossilRate;
+  font-size: 12px;
+  align-self: center;
+  color: black;
+  justify-items: left;
+  align-items: left;
+  font-family: sans-serif;
+}
+
+#iconTwo {
+  grid-area: emmis;
+  font-size: 28px;
+  justify-self: center;
+  align-self: center;
+  
+}
+#ratingTwo {
+  grid-area: emmisRate;
+  font-size: 12px;
+  align-self: left;  
+  color: black;
+  font-family: sans-serif;
+}
+
+#iconThree {
+  grid-area: wtr;
+  font-size: 28px;
+  color: Green;
+  justify-self: center;
+  align-self: center;
+  
+}
+#ratingThree {
+  grid-area: wtrRate;
+  font-size: 12px;
+  align-self: left;  
+  color: black;
+  font-family: sans-serif;
+}
+
+#iconFour {
+  grid-area: Eutro;
+  font-size: 28px;
+  color: yellow;
+  justify-self: center;
+  align-self: center;
+  
+  
+}
+#ratingFour {
+  grid-area: EutroRate;
+  font-size: 12px;
+  align-self: left; 
+  color: black;
+  font-family: sans-serif;
+}
+
+
+#descript {
+  color: black;
+  grid-area: words;
+  font-size: 12px;
+  font-family: sans-serif; 
 }
