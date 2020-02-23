@@ -1,5 +1,5 @@
 {
-  "name": "Maker Impact",
+  "name": "Materials Impact",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "This extension was created with the awesome extensionizr.com",
@@ -10,11 +10,15 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
+  "permissions": [
+    "activeTab"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://hackster.io/*"],
+      "matches": ["<all_urls>"],
       "css": ["src/inject/inject.css"],
-      "js": ["src/inject/inject.js"]
+      "js": ["src/inject/jquery-3.4.1.slim.js", "src/inject/inject.js"],
+      "run_at": "document_end"
     }
  ]
 }
