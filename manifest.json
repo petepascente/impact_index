@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Firebase Auth in Chrome Extension Sample",
-  "description": "This sample shows how to authorize Firebase in a Chrome extension using a Google account.",
+  "name": "Material Matters",
+  "description": "Technology that informs environmentally conscious choice",
   "version": "2.1",
   "icons": {
     "128": "firebase.png"
