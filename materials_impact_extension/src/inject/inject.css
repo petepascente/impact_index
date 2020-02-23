@@ -14,3 +14,16 @@
  .dankAssButton:hover {
    width: 300px
  }
+
+ .foundIt {
+   color: blue;
+   text-decoration: wavy;
+   font-size: 1em;
+   transition: color 2s, font-size 2s;
+ }
+
+ .foundIt:hover {
+   color: red;
+   font-size: 2em;
+
+ }

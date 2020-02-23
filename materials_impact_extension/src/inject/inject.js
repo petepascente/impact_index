@@ -6,8 +6,26 @@ chrome.extension.sendMessage({}, function(response) {
 
 		// ----------------------------------------------------------
 		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		console.log($("*:contains('foo')" ).css( "text-decoration", "underline" ));
+		//console.log("Hello. This message was sent from scripts/inject.js");
+		
+		var searchFor = 'Emu';
+		
+		var swapWith = '<span class="foundIt">' + searchFor + '</span>';
+
+		$("*:contains(" + searchFor + "):not(:has(*))" ).each(function(){
+			var text = this.innerHTML;
+			text = text.replace(searchFor, swapWith);
+			this.innerHTML = text;
+		});
+
+		$(".foundIt").hover(
+			function(event) {
+				// The mouse has entered the element, can reference the element via 'this'
+			},
+			function (event) {
+				// The mouse has left the element, can reference the element via 'this'
+			}
+		);
 		// ----------------------------------------------------------
 	}
 	}, 10);
@@ -30,7 +48,6 @@ button.addEventListener("mouesover", makeBiggah);
 button.addEventListener("mouseout", makeSmallah);
 
 function doThis(){
-
 	if (document.body.textContent.search("effectively") > 0) {
     console.log('yeah baby');
 	};
@@ -38,5 +55,4 @@ function doThis(){
 
 document.body.appendChild(button);
 
-doThis();
 
