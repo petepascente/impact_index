@@ -1,0 +1,1 @@
+# impact_index
