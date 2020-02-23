@@ -7,11 +7,12 @@ chrome.extension.sendMessage({}, function(response) {
 		// ----------------------------------------------------------
 		// This part of the script triggers when page is done loading
 		console.log("Hello. This message was sent from scripts/inject.js");
-		console.log($("*:contains('foo')" ).css( "text-decoration", "underline" ));
 		// ----------------------------------------------------------
 	}
 	}, 10);
 });
+
+var materials = ["polyester", "acrylic", "foo"];
 
 var button = document.createElement("button");
 button.className = "dankAssButton";
@@ -29,14 +30,20 @@ function makeSmallah(){
 button.addEventListener("mouesover", makeBiggah);
 button.addEventListener("mouseout", makeSmallah);
 
-function doThis(){
-
-	if (document.body.textContent.search("effectively") > 0) {
-    console.log('yeah baby');
+function searchForMaterials(){
+	for (i = 0; i < materials.length; i++) {
+		if ($("*:contains('" + materials[i] + "')" ).length > 0) {
+			console.log('I have found ' + materials[i]);
+		};
 	};
 };
 
 document.body.appendChild(button);
 
-doThis();
+searchForMaterials();
+
+console.log($("*:contains(materials[i])" ));
+console.log($("*:contains(materials[i])" ).size);
+console.log($("*:contains(materials[i])" ).length);
+
 
