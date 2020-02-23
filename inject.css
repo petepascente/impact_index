@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Krona+One&display=swap');
+
 .tooltip {
   position: relative;
   display: inline;
   color: red;
+  padding: 0px !important;
+  background: none !important;
+  border-radius: 0px !important;
   border-bottom: 1px dotted black;
 }
 
@@ -14,7 +19,7 @@
   border-radius: 5px;
   padding: 15px;
   position: absolute;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 40% 20% 40%;
   grid-template-rows: 12% 12% 12% 12% 12% 10% 30%;
   grid-template-areas:
@@ -53,6 +58,16 @@ body {
   background-color: #a3d5d3;
 }
 
+.makeRED i {
+  color:Red !important;
+}
+.makeYELLOW i {
+  color:Yellow !important;
+}
+.makeGREEN i {
+  color:Green !important;
+}
+
 #head {
   color: black;
   grid-area: header;
@@ -62,12 +77,7 @@ body {
 }
 
 #sidewayyyz{
-/*   grid-area: header;
-writing-mode: sideways-rl;
-text-orientation: mixed; */
   grid-area: grade;
-/*   writing-mode: vertical-rl;
-  text-orientation: mixed; */
  color: black;
  transform: rotate(-90deg);
   font-family: sans-serif;
@@ -78,7 +88,7 @@ text-orientation: mixed; */
   color: black;
   grid-area: grade;
   font-size: 150px;
-  align-self: center;
+  align-self: center !important;
   font-family: sans-serif;
 }
 
@@ -87,13 +97,13 @@ text-orientation: mixed; */
   font-size: 28px;
   color: red;
   justify-self: center;
-  align-self: center;
+  align-self: center !important;
 }
 
 #ratingOne {
   grid-area: fossilRate;
   font-size: 12px;
-  align-self: center;
+  align-self: center !important;
   color: black;
   justify-items: left;
   align-items: left;
@@ -104,13 +114,13 @@ text-orientation: mixed; */
   grid-area: emmis;
   font-size: 28px;
   justify-self: center;
-  align-self: center;
+  align-self: center !important;
 
 }
 #ratingTwo {
   grid-area: emmisRate;
   font-size: 12px;
-  align-self: left;
+  align-self: center !important;
   color: black;
   font-family: sans-serif;
 }
@@ -120,13 +130,13 @@ text-orientation: mixed; */
   font-size: 28px;
   color: Green;
   justify-self: center;
-  align-self: center;
-
+  align-self: center !important;
 }
+
 #ratingThree {
   grid-area: wtrRate;
   font-size: 12px;
-  align-self: left;
+  align-self: center !important;
   color: black;
   font-family: sans-serif;
 }
@@ -136,10 +146,9 @@ text-orientation: mixed; */
   font-size: 28px;
   color: yellow;
   justify-self: center;
-  align-self: center;
-
-
+  align-self: center !important;
 }
+
 #ratingFour {
   grid-area: EutroRate;
   font-size: 12px;
@@ -148,10 +157,10 @@ text-orientation: mixed; */
   font-family: sans-serif;
 }
 
-
 #descript {
   color: black;
   grid-area: words;
   font-size: 12px;
+  white-space: normal;
   font-family: sans-serif;
 }

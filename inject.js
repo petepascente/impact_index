@@ -52,6 +52,38 @@ function captize(capThis){
 	return (capThis.charAt(0).toUpperCase() + capThis.slice(1));
 };
 
+function getWord(number){
+	switch(number) {
+		case 0:
+		  	return "LOW";
+		  	break;
+		case 1:
+		  	return "MID";
+		  	break;
+		case 2:
+		  	return "HIGH";
+			break;
+		default:
+		  // code block
+	  }
+}
+
+function getColor(number){
+	switch(number) {
+		case 0:
+		  	return "GREEN";
+		  	break;
+		case 1:
+		  	return "YELLOW";
+		  	break;
+		case 2:
+		  	return "RED";
+			break;
+		default:
+		  // code block
+	  }
+}
+
 function fillContent(mat, grade, fuelUse, emissions, waterUse, eutroph, description){
 	var cont = document.createElement("div");
 	cont.id = "infoBox";
@@ -72,35 +104,39 @@ function fillContent(mat, grade, fuelUse, emissions, waterUse, eutroph, descript
 
 	var iconOneB = document.createElement("span");
 	iconOneB.id = "iconOne";
+	iconOneB.style.color = getColor(fuelUse);
 	iconOneB.innerHTML = "<i class='fas fa-gas-pump'></i>";
 
 	var ratingOneB = document.createElement("span");
 	ratingOneB.id = "ratingOne";
-	ratingOneB.innerHTML = "<b>" + fuelUse + "</b> Fossil Fuel Use";
+	ratingOneB.innerHTML = "<b>" + getWord(fuelUse) + "</b> Fossil Fuel Use";
 
 	var iconTwoB = document.createElement("span");
 	iconTwoB.id = "iconTwo";
+	iconTwoB.style.color = getColor(emissions);
 	iconTwoB.innerHTML = "<i class='fas fa-cloud'></i> ";
 
 	var ratingTwoB = document.createElement("span");
 	ratingTwoB.id = "ratingTwo";
-	ratingTwoB.innerHTML = "<b>" + emissions + "</b> CO2 Emissions";
+	ratingTwoB.innerHTML = "<b>" + getWord(emissions) + "</b> CO2 Emissions";
 
 	var iconThreeB = document.createElement("span");
 	iconThreeB.id = "iconThree";
+	iconThreeB.style.color = getColor(waterUse);
 	iconThreeB.innerHTML = "<i class='fas fa-tint'></i>";
 
 	var ratingThreeB = document.createElement("span");
 	ratingThreeB.id = "ratingThree";
-	ratingThreeB.innerHTML = "<b>" + waterUse + "</b> Water Use";
+	ratingThreeB.innerHTML = "<b>" + getWord(waterUse) + "</b> Water Use";
 
 	var iconFourB = document.createElement("span");
 	iconFourB.id = "iconFour";
+	iconFourB.style.color = getColor(eutroph);
 	iconFourB.innerHTML = "<i class='fas fa-water'></i>";
 
 	var ratingFourB = document.createElement("span");
 	ratingFourB.id = "ratingFour";
-	ratingFourB.innerHTML = "<b>" + eutroph + "</b> Eutrophication";
+	ratingFourB.innerHTML = "<b>" + getWord(eutroph) + "</b> Eutrophication";
 
 	// ---
 
