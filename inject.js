@@ -1,45 +1,24 @@
-import firebase from "firebase.js";
 
-var firebaseConfig = {
-	apiKey: "AIzaSyBXLDW5CIx271ZOa-x1HnhqPWPHZCyCTHU",
-	authDomain: "impact-index-2020.firebaseapp.com",
-	databaseURL: "https://impact-index-2020.firebaseio.com",
-	projectId: "impact-index-2020",
-	storageBucket: "impact-index-2020.appspot.com",
-	messagingSenderId: "969923046117",
-	appId: "1:969923046117:web:3bab1da20a6420e638420c",
-	measurementId: "G-QYEEVPM3HB"
-  };
-  
-  firebase.initializeApp(firebaseConfig);
-  
-  var db = firebase.firestore();
-  
-  var collectionRef = db.collection("materials");
-  
-  var mataroos = [];
-
-  collectionRef.get().then(querySnapshot => {
-		querySnapshot.forEach(doc => {
-			console.log(doc.data());
-		  //mataroos.push(btn.innerHTML = doc.data())
-		});
-  });
-  
-
-//Read these in from firebase?
-var materials = ["polyester", "acrylic", "foo", "encyclopedia"];
+function initApp() {
+    chrome.runtime.sendMessage({start: true}, function(response) {
+      searchForMaterials(response.data)
+    });
+}
 
 function searchForMaterials(materials){
 	//For each material...
 	for (i = 0; i < materials.length; i++) {
-		//Replace with Anna's inside?
-		var content = fillContent("Material", "D", "High", "High", "Low", "High", "description");
-		
+
+
 		// Set current material to add spans to
-		var searchFor = materials[i];
+		var searchFor = materials[i]["name"];
+    var dataObject = materials[i]["data"];
+    console.log(dataObject);
 		var capitalized = captize(searchFor);
-		
+
+    //Replace with Anna's inside
+    var content = fillContent(materials[i]["name"], materials[i]["data"]["grade"], materials[i]["data"]["ffu"], materials[i]["data"]["emissions"], materials[i]["data"]["wrd"], materials[i]["data"]["eutro"], materials[i]["data"]["descript"]);
+
 		//What to swap in:
 		var swapWithL = '<div class="tooltip">' + searchFor + '<span class="tooltiptext">' + content + '</span> </div>';
 		var swapWithU = '<div class="tooltip">' + capitalized + '<span class="tooltiptext">' + content + '</span> </div>';
@@ -48,21 +27,21 @@ function searchForMaterials(materials){
 		var regSearchFor = new RegExp('>[^<{}]{0,}(' + searchFor + ')+[^s]{1,}[^>]{0,}<', 'ig');
 		var reg2L = new RegExp('(' + searchFor + ')', 'g');
 		var reg2U = new RegExp('(' + capitalized + ')', 'g');
-		
+
 		//Get a string of the innerHTML of the body
-		var theBody = document.body.innerHTML; 
+		var theBody = document.body.innerHTML;
 
 		//Make the swap
 		theBody = theBody.replace(regSearchFor, function(matched){
 			//console.log(matched);
-			
+
 			var lowerCased = matched.replace(reg2L, swapWithL);
 			var upperCased = lowerCased.replace(reg2U, swapWithU);
-			
+
 			return upperCased;
-		
+
 		});
-		
+
 		//Set body to the swapped HTML
 		document.body.innerHTML = theBody;
 	};
@@ -88,7 +67,7 @@ function fillContent(mat, grade, fuelUse, emissions, waterUse, eutroph, descript
 	var bigGradeB = document.createElement("span");
 	bigGradeB.id = "bigGrade";
 	bigGradeB.innerHTML = "<b> " + grade + "</b>";
-	
+
 	// ----
 
 	var iconOneB = document.createElement("span");
@@ -163,3 +142,6 @@ $(".toolTip").hover(
 	}
 );
 
+window.onload = function() {
+  initApp();
+};
