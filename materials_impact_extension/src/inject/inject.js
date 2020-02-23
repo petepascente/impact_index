@@ -1,3 +1,4 @@
+
 chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
@@ -6,8 +7,8 @@ chrome.extension.sendMessage({}, function(response) {
 		// ----------------------------------------------------------
 		// This part of the script triggers when page is done loading
 		console.log("Hello. This message was sent from scripts/inject.js");
+		console.log($("*:contains('foo')" ).css( "text-decoration", "underline" ));
 		// ----------------------------------------------------------
-
 	}
 	}, 10);
 });
@@ -28,4 +29,14 @@ function makeSmallah(){
 button.addEventListener("mouesover", makeBiggah);
 button.addEventListener("mouseout", makeSmallah);
 
+function doThis(){
+
+	if (document.body.textContent.search("effectively") > 0) {
+    console.log('yeah baby');
+	};
+};
+
 document.body.appendChild(button);
+
+doThis();
+

@@ -17,7 +17,7 @@
     {
       "matches": ["<all_urls>"],
       "css": ["src/inject/inject.css"],
-      "js": ["src/inject/inject.js"],
+      "js": ["src/inject/jquery-3.4.1.slim.js","src/inject/inject.js"],
       "run_at": "document_end"
     }
  ]
